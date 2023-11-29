@@ -15,6 +15,24 @@ app.use(cors())
 app.use(express.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
+app.get('/user', function(req, res){
+    var email = req.query.email;
+    const sqlSelect = "SELECT * FROM Client WHERE email = ?"
+    db.query(sqlSelect, [email], (err, result) => {
+        if(err){
+            console.log(err)
+        }else{
+            if(result){
+                console.log(result)
+                res.send({"email":200})
+            }else{
+                console.log("Senha ou email errados")
+            }
+        }
+    })
+
+})
+
 app.post('/signin', (req, res) => {
 
     const email = req.body.email
@@ -26,7 +44,8 @@ app.post('/signin', (req, res) => {
             console.log(err)
         }else{
             if(result){
-                console.log(result)
+                console.log(result.name)
+                res.send({"Name":result.name})
             }else{
                 console.log("Senha ou email errados")
             }

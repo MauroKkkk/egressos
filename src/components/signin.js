@@ -1,32 +1,35 @@
 import { FaFacebookSquare } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import { BsMicrosoft } from 'react-icons/bs';
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './signinredes.css'
 import React from 'react';
 import NavBar from './NavBar'
-import {Link, Navigate} from 'react-router-dom'
+import {Link} from 'react-router-dom'
+import { Navigate } from "react-router-dom";
 
 
 
 
 import "./signin.css";
 import axios from 'axios';
+import Profile from './Profile';
 
 
 
 function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const submitSignin = () => {
+  const [userSignIn, setUserSignIn] = useState(false);
+  function submitSignin () {
     console.log(email, password)
     axios.post("http://localhost:3001/signin", {
       email: email,
       password: password,
     })
     .then(() => {
-      <Navigate to="/Profile" replace={true}/>
+      setUserSignIn(true)
+      console.log("logou")
     })
   }
   return (
@@ -58,10 +61,11 @@ function Signin() {
             </div>
 
             <div className="container-signin-form-btn">
-                  <button className="signin-form-btn" onClick={() => submitSignin()}>Sign in</button>
+                  <button className="signin-form-btn" onClick={() => (submitSignin(),useEffect(()=>{userSignIn?(<Navigate to="/profile" replace={true}/>,<Profile userEmail={email}/>): null)},[userSignIn])})>Sign in</button>
+                  
                   <div className="text-center">
                     <span className="txt1">Não possui conta? </span>
-                    <Link to="/Cadastro" style={{cursor:'pointer'}} className="txt2">
+                    <Link to="/Signup" style={{cursor:'pointer'}} className="txt2">
                       Criar conta
                     </Link>
 

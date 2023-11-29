@@ -50,7 +50,6 @@ function Signup() {
   const submitSignup = () => {
     axios.get(`https://viacep.com.br/ws/${cep}/json/`)
     .then(() => {
-      alert("CEP válido")
       axios.post("http://localhost:3001/signup", {
         name: name,
         password: password,
@@ -105,9 +104,9 @@ function Signup() {
             <div className="wrap-input">
               <input
                 className={password !== "" ? "has-val input" : "input"}
-                type="text"
-                value={password}
+                type="password"
                 required
+                value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
               <span className="focus-input" data-placeholder="Password"></span>
