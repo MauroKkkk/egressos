@@ -1,0 +1,22 @@
+.loginIcons{
+display: flex;
+justify-content: flex-start;
+list-style: none;
+padding: 0 7px;
+}
+
+.loginIcons li{
+    margin-top: 12px;
+    margin: 3px;
+
+}
+
+.loginIcons li a{
+    font-size: 30px;
+    height: 35px;
+    display: flex;
+    align-items: center; 
+    text-decoration: none;
+    position: relative;
+    justify-content: center;
+}

@@ -1,0 +1,24 @@
+CREATE TABLE Client (
+ 	name varchar (70) NOT null,
+    yearBirthday date not null,
+    email varchar (50) PRIMARY KEY,
+    picture varchar(200),
+    password varchar(200) not null,
+    acting varchar(30) not null,
+    home_cep int(8) not null,
+    work varchar (30),
+    work_cnpj int (14),
+    work_cep int(8),
+    whatsapp int (11),
+    twitter varchar(200),
+    instagram varchar(200),
+    linkedin varchar(200),
+    lattes varchar(200),
+    portifolio varchar(200)
+),
+CREATE TABLE Institution (
+	institutionCode int (8) PRIMARY KEY,
+    courseName varchar(40) not null,
+    endYear date not null,
+    startYear date not null
+)
